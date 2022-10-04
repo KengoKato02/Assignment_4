@@ -1,17 +1,18 @@
 ﻿using MandaAssig_1;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Xml.Linq;
 
 namespace Assignment_4.Managers
 {
     public class FootballPlayerManager
     {
         private static int _nextId = 1;
-        private int Id = 0;
         private static readonly List<FootballPlayer> Data = new List<FootballPlayer>
         {
-            new FootballPlayer {Id = _nextId++, Name = "Ronaldo", Age = 32, shirtNumber = 7},
-            new FottballPlayer {Id = _nextId++, Name = "Messi", Age = 28, shirtNumber = 10},
-            new FottballPlayer {Id = _nextId++, Name = "Kacper", Age = 20, shirtNumber = 99},
-            new FottballPlayer {Id = _nextId++, Name = "Pawel", Age = 90, shirtNumber = 69}
+            new FootballPlayer(_nextId++, "Ronaldo", 32, 7),
+            new FootballPlayer(_nextId++, "Messi", 28, 10),
+            new FootballPlayer(_nextId++, "Kacper", 20, 99),
+            new FootballPlayer(_nextId++, "Pawel", 90, 69),
             //https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/object-and-collection-initializers
         };
 
@@ -21,17 +22,17 @@ namespace Assignment_4.Managers
         }
         public FootballPlayer GetByID(int id)
         {
-            return Data.Find(player => player.Id == id);
+            return Data.Find(player => player.ID == id);
         }
         public FootballPlayer Add(FootballPlayer newPlayer)
         {
-            newPlayer.Id = _nextId++;
+            newPlayer.ID = _nextId++;
             Data.Add(newPlayer);
             return newPlayer;
         }
         public FootballPlayer Update(int id, FootballPlayer updates)
         {
-            FootballPlayer player = Data.Find(player1 => player1.Id == id);
+            FootballPlayer player = Data.Find(player1 => player1.ID == id);
             if (player == null)
             {
                 return null;
