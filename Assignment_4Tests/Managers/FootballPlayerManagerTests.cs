@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Xml.Linq;
 using MandaAssig_1;
 
 namespace Assignment_4.Managers.Tests
@@ -25,14 +27,14 @@ namespace Assignment_4.Managers.Tests
 
             Assert.IsNull(manager.GetByID(100));
 
-            FootballPlayer newPlayer = new FootballPlayer { Name = "Pepe", Age = 33, shirtnumber = 54 };
+            FootballPlayer newPlayer = new FootballPlayer(4, "Pepe", 24, 17);
             FootballPlayer addedPlayer = manager.Add(newPlayer);
-            Assert.AreEqual(3, addedPlayer.Id);
+            Assert.AreEqual(3, addedPlayer.ID);
             Assert.AreEqual(3, manager.GetAll().Count);
 
-            FootballPlayer updates = new FootballPlayer { Name = "Modric", Age = 35, shirtnumber = 17 };
+            FootballPlayer newPlayer1 = new FootballPlayer(3, "Modric", 22, 14);
             FootballPlayer updatedPlayer = manager.Update(3, updates);
-            Assert.AreEqual("Modric", updatedBook.Title);
+            Assert.AreEqual("Modric", updatedPlayer.Title);
 
             Assert.IsNull(manager.Update(100, updates));
 
