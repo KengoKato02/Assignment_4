@@ -46,7 +46,7 @@ namespace Assignment_4.Managers
         }
         public FootballPlayer Delete(int id)
         {
-            FootballPlayer book = Data.Find(player1 => player1.Id == id);
+            FootballPlayer book = Data.Find(player1 => player1.ID == id);
             if (book == null)
             {
                 return null;
