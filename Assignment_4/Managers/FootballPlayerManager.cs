@@ -33,23 +33,23 @@ namespace Assignment_4.Managers
         public FootballPlayer Update(int id, FootballPlayer updates)
         {
             FootballPlayer player = Data.Find(player1 => player1.ID == id);
+            FootballPlayer newPlayer = updates;
             if (player == null)
             {
-                return null;
+                throw new ArgumentNullException();
             }
             else
             {
-                Data.Remove(player);
+                player = newPlayer;
                 return player;
             }
-
         }
         public FootballPlayer Delete(int id)
         {
             FootballPlayer book = Data.Find(player1 => player1.ID == id);
             if (book == null)
             {
-                return null;
+                throw new ArgumentNullException();
             }
             else
             {

@@ -15,6 +15,8 @@ namespace Assignment_4.Controllers
         private readonly FootballPlayerManager _manager = new FootballPlayerManager();
         // GET: api/<ValuesController>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IEnumerable<FootballPlayer> Get()
         {
             return _manager.GetAll();
@@ -22,6 +24,8 @@ namespace Assignment_4.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public FootballPlayer Get(int id)
         {
             return _manager.GetByID(id);
@@ -29,6 +33,8 @@ namespace Assignment_4.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public FootballPlayer Post([FromBody] FootballPlayer value)
         {
             return _manager.Add(value);
@@ -36,6 +42,8 @@ namespace Assignment_4.Controllers
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public FootballPlayer Put(int id, [FromBody] FootballPlayer value)
         {
             return _manager.Update(id, value);
@@ -43,6 +51,8 @@ namespace Assignment_4.Controllers
 
         // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public FootballPlayer Delete(int id)
         {
             return _manager.Delete(id);

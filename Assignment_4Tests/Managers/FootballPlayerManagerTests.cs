@@ -30,5 +30,14 @@ namespace Assignment_4.Managers.Tests
             FootballPlayer player = manager.Add(testingPlayer); //Act
             Assert.AreEqual("pepe", player.Name); //Assert
         }
+        
+        [TestMethod()]
+        public void UpdateTest()
+        {
+            FootballPlayerManager manager = new FootballPlayerManager(); //Arrange
+            FootballPlayer newPlayer = new FootballPlayer(2, "lewandowski", 26, 32);
+            FootballPlayer player = manager.Update(2, newPlayer);
+            Assert.AreEqual("lewandowski", player.Name);
+        }
     }
 }
